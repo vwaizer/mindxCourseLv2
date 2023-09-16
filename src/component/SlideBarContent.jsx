@@ -1,11 +1,15 @@
-import React from 'react'
-
+import React from 'react';
+import {styled} from "styled-components";
+const Flex= styled.div `
+  display: flex;
+  flex-direction:row;
+`;
 const SlideBarContent = (props) => {
   return (
-    <>
-    <div>&check</div>
+    <Flex>
+    <div style={{color:"green"}}>&#10003; </div>
     <div>{props.children}</div>
-    </>
+    </Flex>
   )
 }
 
