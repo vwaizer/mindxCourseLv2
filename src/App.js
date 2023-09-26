@@ -1,6 +1,6 @@
 
 import './App.css';
-import Content from './component/Content';
+import Content from './Component/Content';
 import {styled} from "styled-components";
 
 const FlexColum=styled.div`
