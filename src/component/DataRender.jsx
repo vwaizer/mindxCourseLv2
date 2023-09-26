@@ -13,11 +13,13 @@ const Container=styled.div`
     
 `;
 const DateItem=styled.div`
-      width: 30%;
-      height:100px;
+      width: 20%;
+      
       border-radius:10px;
       background-color:black;
-      
+      display:flex;
+      flex-direction:column;
+      align-items:center;
       color:white;
 `;
 const TittleItem=styled.div`
@@ -43,14 +45,25 @@ const DataRender = ({data}) => {
       
       let lengthData=data.length;
       let result=[];
-      let day;
-      let month;
-      let year;
+      
+
+
       for(let i=0;i<lengthData;i++){
+        var dt = new Date( (data[i].date));
+
+      var year = dt.getFullYear();
+      var month =  (dt.getMonth() < 10 ? '0' : '') + (dt.getMonth()+1);
+      var day = (dt.getDate() < 10 ? '0' : '') + dt.getDate();
+      console.log(year+" "+month+" "+day);
         data[i].filter === false? result.push(
           <>
             <Container >
-            <DateItem>{data[i].date}</DateItem>
+            <DateItem>
+              
+              <div>{month}</div>
+              <div>{day}</div>
+              <div>{year}</div>
+            </DateItem>
             <TittleItem>{data[i].name}</TittleItem>
             <AmountItem>${data[i].amount}</AmountItem>
             </Container>
