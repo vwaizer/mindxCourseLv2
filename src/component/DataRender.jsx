@@ -47,14 +47,14 @@ const DataRender = ({data}) => {
       let month;
       let year;
       for(let i=0;i<lengthData;i++){
-        result.push(
-            <>
-              <Container id={data[i].date}>
-              <DateItem>{data[i].date}</DateItem>
-              <TittleItem>{data[i].name}</TittleItem>
-              <AmountItem>${data[i].amount}</AmountItem>
-              </Container>
-           </>)
+        data[i].filter === false? result.push(
+          <>
+            <Container >
+            <DateItem>{data[i].date}</DateItem>
+            <TittleItem>{data[i].name}</TittleItem>
+            <AmountItem>${data[i].amount}</AmountItem>
+            </Container>
+         </>): <></>
       }
  
 

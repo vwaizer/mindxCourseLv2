@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 
 import styled from 'styled-components';
+import DataRender from './DataRender';
 const SubContent=styled.div`
     display:flex;
     flex-direction:row;
     justify-content:space-between;
 `;
 const FilterDisplay =(dataTest,data)=>{
+    
     if(dataTest.length === 0){
         data.forEach(element => {
-            document.getElementById(element.date).style.display="none";
+            element.filter=true;
         });
         
     }
@@ -18,9 +20,9 @@ const FilterDisplay =(dataTest,data)=>{
         
             for(let k=0;k<dataTest.length;k++){
                 if(data[i].date !== dataTest[k].date)
-                  {  document.getElementById(data[i].date).style.display="none";}
+                  { data[i].filter=true;}
                 else{
-                     document.getElementById(data[i].date).style.display="flex";
+                     data[i].filter=false;
                      break;
                 }
             }
@@ -29,7 +31,7 @@ const FilterDisplay =(dataTest,data)=>{
     }
     
 }
-const FilterSelect = ({data}) => {
+const FilterSelect = ({data,dataTest,func}) => {
    
     const options = [
         { value: '2023', text: '2023' },
@@ -38,22 +40,22 @@ const FilterSelect = ({data}) => {
         { value: '2020', text: '2020' },
         {value: '',text:'all'}
     ];
-    const [selected, setSelected] = useState(options[0].value);
-    const handleChange = event => {
+    const [selected, setSelected] = useState();
+    // const handleChange = event => {
 
-        let dataTest=data.filter((value)=> {
-            let filterDate =value.date;
-            return filterDate.startsWith(event.target.value);
-        })
-        console.log(dataTest);
-        FilterDisplay(dataTest,data);
-        setSelected(event.target.value);
-    };
+    //     dataTest=data.filter((value)=> {
+    //         let filterDate =value.date;
+    //         return filterDate.startsWith(event.target.value);
+    //     })
+    //     console.log(dataTest);
+    //     FilterDisplay(dataTest,data);
+    //     setSelected(event.target.value);
+    // };
     return (
         <><SubContent>
            
             <div>
-            <select value={selected} onChange={handleChange}>
+            <select value={selected} onChange={func}>
                 {options.map(option => (
                     <option key={option.value} value={option.value}>
                         {option.text}

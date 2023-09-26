@@ -12,7 +12,7 @@ const InputContent=(props) =>{
         <InputContainer>
             <div style={{width:"100px",color:"white"}}>{props.title}</div>
 
-            <input type={props.inputType} style={{width:"330px"} } id={props.title}  placeholder={props.title}></input>
+            <input type={props.inputType} style={{width:"330px"} } id={props.title}  placeholder={props.title} ></input>
             
         </InputContainer>
     )

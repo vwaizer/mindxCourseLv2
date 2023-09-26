@@ -11,7 +11,16 @@ const Container=styled.div`
     
 `;
 const VerticalProcess = (props) => {
-    let percentage=props.percentage;
+    let dataBase=props.data;
+    let sum=0;
+    sum=sum+dataBase.map((item)=>{
+      return item.amount;
+    }
+    )
+    let percentage=[];
+    percentage.push(dataBase.map((items)=>{
+      return items.amount/sum;
+    }))
   return (
     <Container>
     <div>
