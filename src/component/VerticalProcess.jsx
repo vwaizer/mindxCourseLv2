@@ -13,43 +13,71 @@ const Container=styled.div`
 const VerticalProcess = (props) => {
     let dataBase=props.data;
     let sum=0;
-    sum=sum+dataBase.map((item)=>{
-      return item.amount;
+    
+    for(let k=0;k<dataBase.length;k++){
+      sum+=dataBase[k].amount;
     }
-    )
-    let percentage=[];
-    percentage.push(dataBase.map((items)=>{
-      return items.amount/sum;
-    }))
+    
+    let percentage=[0,0,0,0,0,0,0,0,0,0,0,0];
+    for(let i=0;i<dataBase.length;i++){
+      let dt = new Date( (dataBase[i].date));
+      let month =  (dt.getMonth() < 10 ? '0' : '') + (dt.getMonth()+1);
+      percentage[month-1]=+dataBase[i].amount;
+    }
+
+    for(let j=0;j<12;j++){
+        percentage[j]=Math.floor(percentage[j]/sum *100);
+    }
+    console.log(percentage);
   return (
     <Container>
     <div>
-    <Progress.Line percent={percentage}  vertical={true}></Progress.Line>
-    <div>Monday</div>
+    <Progress.Line percent={percentage[0]}  vertical={true}></Progress.Line>
+    <div>Jan</div>
     </div>
     <div>
-    <Progress.Line percent={percentage}  vertical={true}></Progress.Line>
-    <div>Tuesday</div>
+    <Progress.Line percent={percentage[1]}  vertical={true}></Progress.Line>
+    <div>Feb</div>
     </div>
     <div>
-    <Progress.Line percent={percentage}  vertical={true}></Progress.Line>
-    <div>Wednesday</div>
+    <Progress.Line percent={percentage[2]}  vertical={true}></Progress.Line>
+    <div>March</div>
     </div>
     <div>
-    <Progress.Line percent={percentage}  vertical={true}></Progress.Line>
-    <div>Thursday</div>
+    <Progress.Line percent={percentage[3]}  vertical={true}></Progress.Line>
+    <div>April</div>
     </div>
     <div>
-    <Progress.Line percent={percentage}  vertical={true}></Progress.Line>
-    <div>Friday</div>
+    <Progress.Line percent={percentage[4]}  vertical={true}></Progress.Line>
+    <div>May</div>
     </div>
     <div>
-    <Progress.Line percent={percentage}  vertical={true}></Progress.Line>
-    <div>Saturday</div>
+    <Progress.Line percent={percentage[5]}  vertical={true}></Progress.Line>
+    <div>June</div>
     </div>
     <div>
-    <Progress.Line percent={percentage}  vertical={true}></Progress.Line>
-    <div>Sunday</div>
+    <Progress.Line percent={percentage[6]}  vertical={true}></Progress.Line>
+    <div>July</div>
+    </div>
+    <div>
+    <Progress.Line percent={percentage[7]}  vertical={true}></Progress.Line>
+    <div>August</div>
+    </div>
+    <div>
+    <Progress.Line percent={percentage[8]}  vertical={true}></Progress.Line>
+    <div>September</div>
+    </div>
+    <div>
+    <Progress.Line percent={percentage[9]}  vertical={true}></Progress.Line>
+    <div>October</div>
+    </div>
+    <div>
+    <Progress.Line percent={percentage[10]}  vertical={true}></Progress.Line>
+    <div>November</div>
+    </div>
+    <div>
+    <Progress.Line percent={percentage[11]}  vertical={true}></Progress.Line>
+    <div>December</div>
     </div>
     </Container>
   )
