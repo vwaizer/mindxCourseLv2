@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import TableCreate from './TableCreate';
 import HeaderItemCreate from './HeaderItemCreate';
+import lineChart from '../img/line-chart-up-02.png';
+import piggy from '../img/piggy-bank.png';
+import shield from '../img/shield-half.png';
+import wallet from '../img/wallet.png';
 const Block=styled.div`
     width:100%;
     height:100%;
@@ -90,7 +94,7 @@ const BodyItem=styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    width:80%;
+    width:90%;
 `;
 const BodyContainer=styled.div`
     display:flex;
@@ -135,13 +139,13 @@ const Content = () => {
 
         <FlexCenter>
             <TableContainer>
-                <TableCreate title="Tiết Kiệm" content="Chuyển tiền trong và ngoài ngân hàng một cách dễ dàng và nhanh chóng với chi phí phù hợp"></TableCreate>
+                <TableCreate img={piggy} title="Tiết Kiệm" content="Chuyển tiền trong và ngoài ngân hàng một cách dễ dàng và nhanh chóng với chi phí phù hợp"></TableCreate>
                 <hr></hr>
-                <TableCreate title="Chất Lượng" content="Các dịch vụ của WhiteFoo Bank sẽ mang đến cho bạn những gì tốt nhất hiện có, và nhiều ưu đãi."></TableCreate>
+                <TableCreate imp={lineChart} title="Chất Lượng" content="Các dịch vụ của WhiteFoo Bank sẽ mang đến cho bạn những gì tốt nhất hiện có, và nhiều ưu đãi."></TableCreate>
                 <hr></hr>
-                <TableCreate title="Nhanh Chóng" content="Giao dịch diễn ra chưa đến 5 giây kể từ lúc xác nhận thanh toán, chuyển trực tiếp đến người nhận."></TableCreate>
+                <TableCreate img={shield} title="Nhanh Chóng" content="Giao dịch diễn ra chưa đến 5 giây kể từ lúc xác nhận thanh toán, chuyển trực tiếp đến người nhận."></TableCreate>
                 <hr></hr>
-                <TableCreate title="Bảo Mật" content="Thông tin giao dịch luôn được mã hóa để giúp dữ liệu của bạn luôn được an toàn, không bị đánh cắp."></TableCreate>
+                <TableCreate img={wallet} title="Bảo Mật" content="Thông tin giao dịch luôn được mã hóa để giúp dữ liệu của bạn luôn được an toàn, không bị đánh cắp."></TableCreate>
             </TableContainer>
         </FlexCenter>
         </BodyItem>

@@ -1,8 +1,7 @@
 
-import Content from './Component/Content';
 import './App.css';
 import {styled} from "styled-components";
-
+import Content from './Component/Content';
 
 function App() {
   return (
