@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 const HeaderItem=styled.div`
     color:white;
+    background-color:transparent;
+    border:0px;
     
 `;
 const HeaderItemCreate = (props) => {
@@ -12,7 +14,10 @@ const HeaderItemCreate = (props) => {
         e.target.style.color="black";
     }
   return (
-    <HeaderItem> <button style={{backgroundColor:"transparent",border:0}} onMouseEnter={enterChangeColor} onMouseLeave={leaveChangeColor}>{props.title} </button></HeaderItem>
+    <>
+    <HeaderItem> <button style={{backgroundColor:"transparent",border:0,fontSize:"20px"}} onMouseEnter={enterChangeColor} onMouseLeave={leaveChangeColor}>{props.title} </button></HeaderItem>
+    
+    </>
   )
 }
 
