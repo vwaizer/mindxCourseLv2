@@ -19,7 +19,8 @@ const VerticalProcess = (props) => {
     )
     let percentage=[];
     percentage.push(dataBase.map((items)=>{
-      return items.amount/sum;
+      if(items.amount !== undefined){return items.amount/sum;}
+      else{return 0;}
     }))
   return (
     <Container>
