@@ -11,11 +11,11 @@ const HeaderItemCreate = (props) => {
         e.target.style.color="red";
     }
     const leaveChangeColor=(e)=>{
-        e.target.style.color="black";
+        e.target.style.color="white";
     }
   return (
     <>
-    <HeaderItem> <button style={{backgroundColor:"transparent",border:0,fontSize:"20px"}} onMouseEnter={enterChangeColor} onMouseLeave={leaveChangeColor}>{props.title} </button></HeaderItem>
+    <HeaderItem> <button style={{backgroundColor:"transparent",border:0,fontSize:"20px",color:"white"}} onMouseEnter={enterChangeColor} onMouseLeave={leaveChangeColor}>{props.title} </button></HeaderItem>
     
     </>
   )

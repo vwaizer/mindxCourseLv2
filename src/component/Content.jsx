@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import TableCreate from './TableCreate';
 import HeaderItemCreate from './HeaderItemCreate';
-import lineChart from '../img/line-chart-up-02.png';
+import lineChart from '../img/line-chart-up.png';
 import piggy from '../img/piggy-bank.png';
 import shield from '../img/shield-half.png';
 import wallet from '../img/wallet.png';
+import banner from '../img/header-banner.jpg';
+import logoPart1 from '../img/whitefoologocap.png';
+import logoPart2 from '../img/whitefoologohead.png';
 const Block=styled.div`
     width:100%;
     height:100%;
+    background-color: transparent;
     
-
 
 `;
 const HeaderContainer=styled.div`
@@ -19,13 +22,14 @@ const HeaderContainer=styled.div`
     display:flex;
     flex-direction:row;
     justify-content:space-between;
-    
+    padding-top:25px;
 
 `;
 const HeaderItemContainer=styled.div`
     display:flex;
     flex-direction:row;
     gap:10px;
+    
 `;
 
 const BannerContainer=styled.div`
@@ -33,7 +37,7 @@ const BannerContainer=styled.div`
     height:250px;
     display:flex;
     flex-direction:column;
-    background-color:red;
+    
 
 
 `;
@@ -42,6 +46,8 @@ const BannerItem=styled.div`
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+    color:white;
+    gap:12px;
 `;
 const TableContainer=styled.div`
     display:flex;
@@ -53,6 +59,7 @@ const TableContainer=styled.div`
     margin-top:20px;
     border-radius:10px;
     border:2px solid black;
+    background-color:white;
 
 `;
 
@@ -87,6 +94,8 @@ const FooterItem=styled.div`
     display:flex;
     flex-direction:column;
     width:25%;
+    gap:5px;
+    margin-top:15px;
 
 `;
 const BodyItem=styled.div`
@@ -96,31 +105,46 @@ const BodyItem=styled.div`
     align-items:center;
     width:90%;
 `;
+const ImgContainer=styled.div`
+    display:flex;
+    flex-direction:row;
+
+`;
 const BodyContainer=styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    
+`;
+const ColorButton=styled.button`
+    background: linear-gradient(90deg, rgba(179,255,171,1) 5%, rgba(18,255,247,1) 57%);
+`;
+const ColorButton1=styled.button`
+    background:linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 54%, rgba(252,176,69,1) 100%); ;
 `;
 const Content = () => {
     
-    
+    const [colorButton,setColorButton]=useState(false);
     const enterChangeButtonColor=(e)=>{
-        e.target.style.backgroundColor="skyblue";
-        e.target.style.color="red";
+        setColorButton(true);
     }
     const leaveChangeButtonColor=(e)=>{
-        e.target.style.backgroundColor="red";
-        e.target.style.color="white";
+        setColorButton(false);
     }
   return (
-    <Block>
+    <Block >
         
 
-       <BodyContainer>
+       <BodyContainer style={{backgroundImage:`url(${banner})`, backgroundSize:"100% 80%", backgroundRepeat:"no-repeat"}}>
        <BodyItem>
        <HeaderContainer>
-            <div>Logo</div>
+            <div>
+                <ImgContainer>
+                <img src={logoPart2} style={{width:"10%"}} alt="picture1" />
+                <img src={logoPart1} style={{width:"30%"}} alt="picture2" />
+                </ImgContainer>
+            </div>
             <HeaderItemContainer>
                 <HeaderItemCreate title="Trang chủ"></HeaderItemCreate>
                 <HeaderItemCreate title="Thông tin"></HeaderItemCreate>
@@ -133,7 +157,8 @@ const Content = () => {
             <BannerItem>
             <h1>Thanh toán không thể dễ dàng hơn</h1>
             <div>Hệ thống ngân hàng internet hiện đại được tạo ra dành cho bạn</div>
-            <div><button style={{backgroundColor:"red",width:"40%",height:"50px"}} onMouseEnter={enterChangeButtonColor} onMouseLeave={leaveChangeButtonColor}>Bắt đầu </button></div>
+            {colorButton? <ColorButton style={{width:"40%",height:"50px",borderRadius:"10px",color:"white"}} onMouseEnter={enterChangeButtonColor} onMouseLeave={leaveChangeButtonColor}>Bắt đầu </ColorButton>:
+            <ColorButton1 style={{width:"40%",height:"50px",borderRadius:"10px",color:"white"}} onMouseEnter={enterChangeButtonColor} onMouseLeave={leaveChangeButtonColor}>Bắt đầu </ColorButton1>}
             </BannerItem>
         </BannerContainer>
 
@@ -141,7 +166,7 @@ const Content = () => {
             <TableContainer>
                 <TableCreate img={piggy} title="Tiết Kiệm" content="Chuyển tiền trong và ngoài ngân hàng một cách dễ dàng và nhanh chóng với chi phí phù hợp"></TableCreate>
                 <hr></hr>
-                <TableCreate imp={lineChart} title="Chất Lượng" content="Các dịch vụ của WhiteFoo Bank sẽ mang đến cho bạn những gì tốt nhất hiện có, và nhiều ưu đãi."></TableCreate>
+                <TableCreate img={lineChart} title="Chất Lượng" content="Các dịch vụ của WhiteFoo Bank sẽ mang đến cho bạn những gì tốt nhất hiện có, và nhiều ưu đãi."></TableCreate>
                 <hr></hr>
                 <TableCreate img={shield} title="Nhanh Chóng" content="Giao dịch diễn ra chưa đến 5 giây kể từ lúc xác nhận thanh toán, chuyển trực tiếp đến người nhận."></TableCreate>
                 <hr></hr>
@@ -156,7 +181,7 @@ const Content = () => {
         <FlexEnd>
         <FooterContainer>
             <FooterItem >
-                <div>Logo</div>
+                <h2><img src={logoPart1} style={{width:"40%"}} alt="picture2" /></h2>
                 <div>
                 Hệ thống ngân hàng xuyên quốc gia đáng tin cậy. Dẫn đầu trong danh sách các ngân hàng được người dùng bình chọn và được tin dùng bởi hàng triệu người dùng ở hầu hết các quốc gia trên thế giới.
                 </div>
