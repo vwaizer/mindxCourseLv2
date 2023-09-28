@@ -34,7 +34,6 @@ const VerticalProcess = (props) => {
       }
     }
     
-    
   return (
     <Container>
     <div>
