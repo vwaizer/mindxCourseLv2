@@ -42,24 +42,24 @@ const AmountItem=styled.div`
 `;
 const DataRender = ({data}) => {
       
-      let dataBase=data;
+      
       let lengthData=data.length;
       let result=[];
       
 
 
       for(let i=0;i<lengthData;i++){
-        var dt = new Date( (dataBase[i].date));
+        var dt = new Date( (data[i].date));
 
       var year = dt.getFullYear();
       var month =  (dt.getMonth() < 10 ? '0' : '') + (dt.getMonth()+1);
       var day = (dt.getDate() < 10 ? '0' : '') + dt.getDate();
       console.log(year+" "+month+" "+day);
-        if (dataBase[i].filter === false)
-        { result.push(
+        data[i].filter === false? result.push(
           <>
             <Container >
             <DateItem>
+              
               <div>{month}</div>
               <div>{day}</div>
               <div>{year}</div>
@@ -67,7 +67,7 @@ const DataRender = ({data}) => {
             <TittleItem>{data[i].name}</TittleItem>
             <AmountItem>${data[i].amount}</AmountItem>
             </Container>
-         </>)}
+         </>): <></>
       }
  
 

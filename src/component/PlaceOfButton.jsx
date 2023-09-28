@@ -17,8 +17,6 @@ export const Container=styled.div`
     
     display:flex;
    flex-direction:column;
-   justify-content:center;
-   align-items:center;
     width:100%;
     height:100%;
     /* margin:10px; */
@@ -69,9 +67,8 @@ const InputContainer=styled.div`
 `;
 
 const PlaceOfButton = (props) => {
-    const [filterData,setFilterData]=useState([]);
-    // let dataBase=props.data;
-    const [dataBase,setDataBase]=useState(props.data);
+    let filterData=[];
+    let dataBase=props.data;
     const [NameValue,setNameValue]=useState({});
     const [AmountValue,setAmountValue]=useState({});
     const [DateValue,setDateValue]=useState({});
@@ -84,22 +81,26 @@ const PlaceOfButton = (props) => {
         {value: '',text:'all'}
     ];
     const [selected, setSelected] = useState();
-    const FilterDisplay =(dataTest)=>{
+    const FilterDisplay =(dataTest,data)=>{
     
         if(dataTest.length === 0){
-            dataBase.forEach(element => {
+            for(let m=0;m<dataBase.length;m++){
+                dataBase[m].filter=true;
+            }
+
+            data.forEach(element => {
                 element.filter=true;
             });
             
         }
         else{
-            for(let i=0;i<dataBase.length;i++){
+            for(let i=0;i<data.length;i++){
             
                 for(let k=0;k<dataTest.length;k++){
-                    if(dataBase[i].date !== dataTest[k].date)
-                      { setDataBase(dataBase[i].filter=true);}
+                    if(data[i].date !== dataTest[k].date)
+                      { data[i].filter=true;}
                     else{
-                         setDataBase(dataBase[i].filter=false);
+                         data[i].filter=false;
                          break;
                     }
                 }
@@ -113,28 +114,19 @@ const PlaceOfButton = (props) => {
         )
     }
     const handleChange = (event) => {
-        // let tmpData=dataBase.filter((value)=> {
-        //     let filterDate =value.date;
-        //     return filterDate.startsWith(event.target.value);
-        // });
-        let tmpData=[];
-        for(let i=0;i<dataBase.length;i++){
-            let filterDate=dataBase[i].date;
-            if(filterDate.startsWith(event.target.value))
-            {
-            tmpData.push(dataBase[i]);
-            }
-            
-        }
-        console.log(tmpData);
-        setFilterData(tmpData);
+        
+        filterData=dataBase.filter((value)=> {
+            let filterDate =value.date;
+            return filterDate.startsWith(event.target.value);
+        })
+        console.log(filterData);
         setSelected(event.target.value);
         FilterDisplay(filterData,dataBase);
         
     };
     const onClickFuncAdd=()=>{
         console.log("vao lick");
-        setDataBase([dataBase,{...NameValue,...AmountValue,...DateValue}]);
+        dataBase.push({...NameValue,...AmountValue,...DateValue});
         setDisplay(
             <Block>
                 <DataRender data={dataBase}/>
