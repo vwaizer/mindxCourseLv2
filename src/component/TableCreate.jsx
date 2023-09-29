@@ -7,7 +7,7 @@ const TableItem=styled.div`
     height:300px;
     align-items:center;
     justify-content:center;
-
+    cursor: pointer;
 `;
 const ImgItem=styled.div`
     display:flex;

@@ -119,9 +119,11 @@ const BodyContainer=styled.div`
 `;
 const ColorButton=styled.button`
     background: linear-gradient(90deg, rgba(179,255,171,1) 5%, rgba(18,255,247,1) 57%);
+    cursor: pointer;
 `;
 const ColorButton1=styled.button`
-    background:linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 54%, rgba(252,176,69,1) 100%); ;
+    background:linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 54%, rgba(252,176,69,1) 100%); 
+    cursor: pointer;
 `;
 const Content = () => {
     

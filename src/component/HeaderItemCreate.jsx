@@ -15,7 +15,7 @@ const HeaderItemCreate = (props) => {
     }
   return (
     <>
-    <HeaderItem> <button style={{backgroundColor:"transparent",border:0,fontSize:"20px",color:"white"}} onMouseEnter={enterChangeColor} onMouseLeave={leaveChangeColor}>{props.title} </button></HeaderItem>
+    <HeaderItem> <button style={{backgroundColor:"transparent",border:0,fontSize:"20px",color:"white",cursor:"pointer"}} onMouseEnter={enterChangeColor} onMouseLeave={leaveChangeColor}>{props.title} </button></HeaderItem>
     
     </>
   )
