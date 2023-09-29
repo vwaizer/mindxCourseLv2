@@ -72,7 +72,7 @@ const PlaceOfButton = (props) => {
     const [NameValue,setNameValue]=useState({});
     const [AmountValue,setAmountValue]=useState({});
     const [DateValue,setDateValue]=useState({});
-    const [display,setDisplay]=useState([]);
+    const [display,setDisplay]=useState([props.data]);
     const options = [
         { value: '2023', text: '2023' },
         { value: '2022', text: '2022' },
@@ -81,7 +81,7 @@ const PlaceOfButton = (props) => {
         {value: '',text:'all'}
     ];
     const [selected, setSelected] = useState();
-    const FilterDisplay =(dataTest,data)=>{
+    const filterDisplay =(dataTest,data)=>{
     
         if(dataTest.length === 0){
 
@@ -105,11 +105,7 @@ const PlaceOfButton = (props) => {
                
             }
         }
-        setDisplay(
-            <Block>
-                <DataRender data={dataBase}/>
-            </Block>
-        )
+      
     }
     const handleChange = (event) => {
         
@@ -119,16 +115,14 @@ const PlaceOfButton = (props) => {
         })
         console.log(filterData);
         setSelected(event.target.value);
-        FilterDisplay(filterData,dataBase);
+        filterDisplay(filterData,dataBase);
         
     };
     const onClickFuncAdd=()=>{
         console.log("vao lick");
         dataBase.push({...NameValue,...AmountValue,...DateValue});
         setDisplay(
-            <Block>
-                <DataRender data={dataBase}/>
-            </Block>
+            
         )
     
     
@@ -138,12 +132,9 @@ const PlaceOfButton = (props) => {
         
     }
     const cancelFunc=()=>{
-        let nameOfProduce=document.getElementById("Name");
-    nameOfProduce.value="";
-    let amountOfProduce=document.getElementById("Amount");
-    amountOfProduce.value="";
-    let dateOfProduce=document.getElementById("Date");
-    dateOfProduce.value="";
+        setNameValue("");
+        setAmountValue("");
+        setDateValue("");
     }
     let [count, setCount] = useState(0);
     let count1=0;
@@ -217,7 +208,9 @@ const PlaceOfButton = (props) => {
 
             <VerticalProcess data={filterData} ></VerticalProcess>
 
-            {display}
+            <Block>
+                <DataRender data={dataBase}/>
+            </Block>
         </ContainerPart2>
 
         
