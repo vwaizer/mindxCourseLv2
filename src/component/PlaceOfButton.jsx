@@ -85,9 +85,12 @@ const PlaceOfButton = (props) => {
     
         if(dataTest.length === 0){
 
+
             for(let m=0;m<dataBase.length;m++){
                 dataBase[m].filter=true;
             }
+
+
 
             
         }
