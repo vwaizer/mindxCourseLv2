@@ -75,7 +75,7 @@ const PlaceOfButton = (props) => {
     const [NameValue,setNameValue]=useState({});
     const [AmountValue,setAmountValue]=useState({});
     const [DateValue,setDateValue]=useState({});
-    const [display,setDisplay]=useState([]);
+    
     const options = [
         { value: '2023', text: '2023' },
         { value: '2022', text: '2022' },
@@ -106,11 +106,7 @@ const PlaceOfButton = (props) => {
                
             }
         }
-        setDisplay(
-            <Block>
-                <DataRender data={dataBase}/>
-            </Block>
-        )
+        
     }
     const handleChange = (event) => {
         // let tmpData=dataBase.filter((value)=> {
@@ -135,11 +131,7 @@ const PlaceOfButton = (props) => {
     const onClickFuncAdd=()=>{
         console.log("vao lick");
         setDataBase([dataBase,{...NameValue,...AmountValue,...DateValue}]);
-        setDisplay(
-            <Block>
-                <DataRender data={dataBase}/>
-            </Block>
-        )
+        
     
     
     
@@ -148,12 +140,9 @@ const PlaceOfButton = (props) => {
         
     }
     const cancelFunc=()=>{
-        let nameOfProduce=document.getElementById("Name");
-    nameOfProduce.value="";
-    let amountOfProduce=document.getElementById("Amount");
-    amountOfProduce.value="";
-    let dateOfProduce=document.getElementById("Date");
-    dateOfProduce.value="";
+        setNameValue({});
+        setAmountValue({});
+        setDateValue({});
     }
     let [count, setCount] = useState(0);
     let count1=0;
@@ -227,7 +216,9 @@ const PlaceOfButton = (props) => {
 
             <VerticalProcess data={filterData} ></VerticalProcess>
 
-            {display}
+            <Block>
+                <DataRender data={dataBase}/>
+            </Block>
         </ContainerPart2>
 
         
