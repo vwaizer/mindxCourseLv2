@@ -116,7 +116,9 @@ const PlaceOfButton = (props) => {
         let tmpData=[];
         for(let i=0;i<dataBase.length;i++){
             let filterDate=dataBase[i].date;
-            if(filterDate.startsWith(event.target.value))
+            console.log(filterDate);
+            console.log(filterDate.startsWith(event.target.value));
+            if(filterDate.startsWith(event.target.value) === true)
             {
             tmpData.push(dataBase[i]);
             }
@@ -124,14 +126,15 @@ const PlaceOfButton = (props) => {
         }
         console.log(tmpData);
         setFilterData(tmpData);
+        console.log(filterData);
         setSelected(event.target.value);
         FilterDisplay(filterData,dataBase);
         
     };
     const onClickFuncAdd=()=>{
-        console.log("vao lick");
-        setDataBase([dataBase,{...NameValue,...AmountValue,...DateValue}]);
-        
+        console.log("vao click");   
+        console.log(dataBase);
+        setDataBase([...dataBase,{ ...NameValue,...AmountValue,...DateValue  }]);
     
     
     
@@ -212,13 +215,15 @@ const PlaceOfButton = (props) => {
             
             </SubContent>
             
-            </SubContent>
+        </SubContent>
 
-            <VerticalProcess data={filterData} ></VerticalProcess>
+            {/* <VerticalProcess data={filterData} ></VerticalProcess> */}
 
-            <Block>
+            {(filterData !== undefined)  ? <Block>
+                <DataRender data={filterData}/>
+            </Block> : <><Block>
                 <DataRender data={dataBase}/>
-            </Block>
+            </Block> </>}
         </ContainerPart2>
 
         

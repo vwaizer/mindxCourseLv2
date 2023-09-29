@@ -45,9 +45,6 @@ const DataRender = ({data}) => {
       
       let lengthData=data.length;
       let result=[];
-      
-
-
       for(let i=0;i<lengthData;i++){
         var dt = new Date( (data[i].date));
 
@@ -55,7 +52,7 @@ const DataRender = ({data}) => {
       var month =  (dt.getMonth() < 10 ? '0' : '') + (dt.getMonth()+1);
       var day = (dt.getDate() < 10 ? '0' : '') + dt.getDate();
       console.log(year+" "+month+" "+day);
-        data[i].filter === false? result.push(
+        data[i].filter === true? result.push(
           <>
             <Container >
             <DateItem>
