@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import styled from 'styled-components';
 import ButtonComponent from './ButtonComponent';
 import DataRender from './DataRender';
-import VerticalProcess from './VerticalProcess';
+
 
 export const Flex = styled.div`
     display: flex;
