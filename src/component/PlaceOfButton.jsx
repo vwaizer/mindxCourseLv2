@@ -17,6 +17,8 @@ export const Container=styled.div`
     
     display:flex;
    flex-direction:column;
+   justify-content:center;
+   align-items:center;
     width:100%;
     height:100%;
     /* margin:10px; */
@@ -67,8 +69,9 @@ const InputContainer=styled.div`
 `;
 
 const PlaceOfButton = (props) => {
-    let filterData=[];
-    let dataBase=props.data;
+    const [filterData,setFilterData]=useState([]);
+    // let dataBase=props.data;
+    const [dataBase,setDataBase]=useState(props.data);
     const [NameValue,setNameValue]=useState({});
     const [AmountValue,setAmountValue]=useState({});
     const [DateValue,setDateValue]=useState({});
@@ -81,22 +84,22 @@ const PlaceOfButton = (props) => {
         {value: '',text:'all'}
     ];
     const [selected, setSelected] = useState();
-    const FilterDisplay =(dataTest,data)=>{
+    const FilterDisplay =(dataTest)=>{
     
         if(dataTest.length === 0){
-            data.forEach(element => {
-                element.filter=true;
-            });
+            for(let m=0;m<dataBase.length;m++){
+                dataBase[m].filter=true;
+            }
             
         }
         else{
-            for(let i=0;i<data.length;i++){
+            for(let i=0;i<dataBase.length;i++){
             
                 for(let k=0;k<dataTest.length;k++){
-                    if(data[i].date !== dataTest[k].date)
-                      { data[i].filter=true;}
+                    if(dataBase[i].date !== dataTest[k].date)
+                      { setDataBase(dataBase[i].filter=true);}
                     else{
-                         data[i].filter=false;
+                         setDataBase(dataBase[i].filter=false);
                          break;
                     }
                 }
@@ -110,19 +113,28 @@ const PlaceOfButton = (props) => {
         )
     }
     const handleChange = (event) => {
-        
-        filterData=dataBase.filter((value)=> {
-            let filterDate =value.date;
-            return filterDate.startsWith(event.target.value);
-        })
-        console.log(filterData);
+        // let tmpData=dataBase.filter((value)=> {
+        //     let filterDate =value.date;
+        //     return filterDate.startsWith(event.target.value);
+        // });
+        let tmpData=[];
+        for(let i=0;i<dataBase.length;i++){
+            let filterDate=dataBase[i].date;
+            if(filterDate.startsWith(event.target.value))
+            {
+            tmpData.push(dataBase[i]);
+            }
+            
+        }
+        console.log(tmpData);
+        setFilterData(tmpData);
         setSelected(event.target.value);
         FilterDisplay(filterData,dataBase);
         
     };
     const onClickFuncAdd=()=>{
         console.log("vao lick");
-        dataBase.push({...NameValue,...AmountValue,...DateValue});
+        setDataBase([dataBase,{...NameValue,...AmountValue,...DateValue}]);
         setDisplay(
             <Block>
                 <DataRender data={dataBase}/>
