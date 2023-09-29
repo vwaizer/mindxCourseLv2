@@ -40,20 +40,24 @@ const AmountItem=styled.div`
     border:2px solid white;
 
 `;
-const DataRender = ({data}) => {
+const DataRender = (props) => {
       
-      
+      let data=props.data;
       let lengthData=data.length;
       let result=[];
-      for(let i=0;i<lengthData;i++){
+      if(data.length ===0){
+        result.push(<div></div>)
+      }
+      else{
+        result=[];
+        for(let i=0;i<lengthData;i++){
         var dt = new Date( (data[i].date));
 
       var year = dt.getFullYear();
       var month =  (dt.getMonth() < 10 ? '0' : '') + (dt.getMonth()+1);
       var day = (dt.getDate() < 10 ? '0' : '') + dt.getDate();
-      console.log(year+" "+month+" "+day);
-        data[i].filter === true? result.push(
-          <>
+         result.push(
+          <div>
             <Container >
             <DateItem>
               
@@ -64,8 +68,9 @@ const DataRender = ({data}) => {
             <TittleItem>{data[i].name}</TittleItem>
             <AmountItem>${data[i].amount}</AmountItem>
             </Container>
-         </>): <></>
-      }
+         </div>)
+      }}
+      
  
 
   return(

@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import styled from 'styled-components';
 import ButtonComponent from './ButtonComponent';
 import DataRender from './DataRender';
-
+import VerticalProcess from './VerticalProcess';
 
 export const Flex = styled.div`
     display: flex;
@@ -69,53 +69,57 @@ const InputContainer=styled.div`
 `;
 
 const PlaceOfButton = (props) => {
+    const [filtered,setFiltered]=useState(false);
     const [filterData,setFilterData]=useState([]);
     // let dataBase=props.data;
     const [dataBase,setDataBase]=useState(props.data);
-    const [NameValue,setNameValue]=useState({});
-    const [AmountValue,setAmountValue]=useState({});
-    const [DateValue,setDateValue]=useState({});
+    const [nameValue,setNameValue]=useState({});
+    const [amountValue,setAmountValue]=useState({});
+    const [dateValue,setDateValue]=useState({});
     
     const options = [
         { value: '2023', text: '2023' },
         { value: '2022', text: '2022' },
         { value: '2021', text: '2021' },
         { value: '2020', text: '2020' },
-        {value: '',text:'all'}
+    
     ];
     const [selected, setSelected] = useState();
-    const FilterDisplay =(dataTest)=>{
+    // const FilterDisplay =(dataTest)=>{
     
-        if(dataTest.length === 0){
-            for(let m=0;m<dataBase.length;m++){
-                dataBase[m].filter=true;
-            }
+    //     if(dataTest.length === 0){
+    //         for(let m=0;m<dataBase.length;m++){
+    //             dataBase[m].filter=true;
+    //         }
             
-        }
-        else{
-            for(let i=0;i<dataBase.length;i++){
+    //     }
+    //     else{
+    //         for(let i=0;i<dataBase.length;i++){
             
-                for(let k=0;k<dataTest.length;k++){
-                    if(dataBase[i].date !== dataTest[k].date)
-                      { setDataBase(dataBase[i].filter=true);}
-                    else{
-                         setDataBase(dataBase[i].filter=false);
-                         break;
-                    }
-                }
+    //             for(let k=0;k<dataTest.length;k++){
+    //                 if(dataBase[i].date !== dataTest[k].date)
+    //                   { setDataBase(dataBase[i].filter=true);}
+    //                 else{
+    //                      setDataBase(dataBase[i].filter=false);
+    //                      break;
+    //                 }
+    //             }
                
-            }
-        }
+    //         }
+    //     }
         
-    }
+    // }
     const handleChange = (event) => {
         // let tmpData=dataBase.filter((value)=> {
         //     let filterDate =value.date;
         //     return filterDate.startsWith(event.target.value);
         // });
         let tmpData=[];
-        for(let i=0;i<dataBase.length;i++){
-            let filterDate=dataBase[i].date;
+        setFiltered(true);
+        let dataTest=[...dataBase];
+        console.log(dataBase);
+        for(let i=0;i<dataTest.length;i++){
+            let filterDate=dataTest[i].date;
             console.log(filterDate);
             console.log(filterDate.startsWith(event.target.value));
             if(filterDate.startsWith(event.target.value) === true)
@@ -124,18 +128,16 @@ const PlaceOfButton = (props) => {
             }
             
         }
-        console.log(tmpData);
+
         setFilterData(tmpData);
-        console.log(filterData);
         setSelected(event.target.value);
-        FilterDisplay(filterData,dataBase);
         
     };
     const onClickFuncAdd=()=>{
         console.log("vao click");   
-        console.log(dataBase);
-        setDataBase([...dataBase,{ ...NameValue,...AmountValue,...DateValue  }]);
-    
+        
+        setDataBase([...dataBase,{ ...nameValue,...amountValue,...dateValue  }]);
+        
     
     
     // document.getElementById("contextArea").innerHTML+=<DataRender name={nameOfProduce.value} amount={amountOfProduce.value} date={dateOfProduce.value}/>  ;
@@ -203,7 +205,7 @@ const PlaceOfButton = (props) => {
                 <SubContent>
            
             <div>
-            <select value={selected} onChange={(e)=>handleChange(e)}>
+            <select value={selected} onChange={handleChange}>
                 {options.map(option => (
                     <option key={option.value} value={option.value}>
                         {option.text}
@@ -217,13 +219,15 @@ const PlaceOfButton = (props) => {
             
         </SubContent>
 
-            {/* <VerticalProcess data={filterData} ></VerticalProcess> */}
+            <VerticalProcess data={filterData} ></VerticalProcess>
 
-            {(filterData !== undefined)  ? <Block>
-                <DataRender data={filterData}/>
-            </Block> : <><Block>
+            { (!filtered)? <>
+            <div style={{color:"red"}}>No filter</div>
+            <Block>
                 <DataRender data={dataBase}/>
-            </Block> </>}
+            </Block> </>:<Block>
+                <DataRender data={filterData}/>
+            </Block>}
         </ContainerPart2>
 
         

@@ -22,11 +22,12 @@ const Container = styled.div`
 
         let dt = new Date((dataBase[i].date));
         let month = (dt.getMonth() < 10 ? '0' : '') + (dt.getMonth() + 1);
-        percentage[month - 1] = +dataBase[i].amount;
+        percentage[month - 1] += dataBase[i].amount;
       }
 
       for (let j = 0; j < 12; j++) {
-        percentage[j] = Math.floor(percentage[j] / sum * 100);
+        if(percentage[j] !==0){percentage[j] = Math.floor((percentage[j]/sum) * 100);}
+        
       }
     }
 
