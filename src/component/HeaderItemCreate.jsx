@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 const HeaderItem=styled.div`
     color:white;
-    background-color:red;
+    background-color:transparent;
     border:0px;
     
 `;

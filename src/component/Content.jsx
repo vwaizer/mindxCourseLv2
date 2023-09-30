@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import HeaderItemCreate from './HeaderItemCreate';
 import FormRender from './FormRender';
+import logoPic from '../img/header-logo.a4cff821.svg'
 const Block=styled.div`
     width:100%;
     height:100%;
-    background-color: red;
+    
     
 
 `;
@@ -27,24 +28,29 @@ const HeaderItemContainer=styled.div`
 
 const BannerContainer=styled.div`
     width:100%;
-    height:250px;
+    height:100%;
     display:flex;
     flex-direction:row;
+    justify-content:space-between;
     
 
 
 `;
 const BannerItem=styled.div`
-    width:35%;
+    width:30%;
     display:flex;
     flex-direction:column;
-    justify-content:space-between;
     color:white;
-    gap:12px;
+
 `;
 
 
-
+const AddPictureContainer=styled.div`
+    border:2px dashed white;
+    width:60%;
+    height:90%;
+    border-radius:5px;
+`;
 const FlexEnd=styled.div`
     display:flex;
     flex-direction:column;
@@ -61,6 +67,7 @@ const BodyItem=styled.div`
     justify-content:center;
     align-items:center;
     width:90%;
+    height:600px;
 `;
 const ImgContainer=styled.div`
     display:flex;
@@ -73,19 +80,35 @@ const BodyContainer=styled.div`
     justify-content:center;
     align-items:center;
     background:linear-gradient(90deg, rgba(237,216,15,1) 28%, rgba(255,134,18,1) 60%);
+    width:100%;
     
 `;
 
 const ContentContainer=styled.div`
     display:flex;
     flex-direction:row;
+    width:100%;
+    
+    justify-content:space-between;
 
 `;
 const ContentItem=styled.div`
     background-color:white;
     border-radius:10px;
-`;
+    height:100%;
+    width:50%;
+    display:flex;
+    flex-direction: column;
+    justify-content:start;
+    
 
+`;
+const FlexStart=styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    height:50%;
+`;
 const Content = () => {
     
    
@@ -98,7 +121,7 @@ const Content = () => {
        <HeaderContainer>
             <div>
                 <ImgContainer>
-                <img src="" style={{width:"10%"}} alt="picture1" />
+                <img src={logoPic} style={{width:"100%"}} alt="picture1" />
                 </ImgContainer>
             </div>
             <HeaderItemContainer>
@@ -111,29 +134,39 @@ const Content = () => {
         </HeaderContainer>
         <BannerContainer>
             <BannerItem>
-            <h1 style={{backgroundColor:"purple"}}>Untitle</h1>
-            <h1>Event</h1>
+            <div>
+                <h1 style={{backgroundColor:"purple"}}>Untitle</h1>
+                <h1>Event</h1>
+            </div>
             <FormRender/>
             </BannerItem>
-            <input type='file'/>
+
+            <AddPictureContainer><input type='file'/></AddPictureContainer>
+            
         </BannerContainer>
         
         
         <ContentContainer>
-            <div>
+            <div style={{width:"40%",height:"80%"}}>
                 <div>Description</div>
-                <input type='text' placeholder='Description of your event' style={{height:"200px"}}/>
+                <input type='text' placeholder='Description of your event' style={{height:"100%",width:"100%"}}/>
             </div>
             <ContentItem>
-                <h2 style={{backgroundColor:"yellow",color:"purple"}}>Settings</h2>
-                <input type='checkbox'> I want to approve attendees</input>
+                <h2 style={{backgroundColor:"yellow",color:"purple", width:"30%"}}>Settings</h2>
+                <FlexStart><input type='checkbox'/><div>I want to approve attendees</div></FlexStart>
+                
                 <ContentContainer>
-                    <input type='radio' />
-                    <div>public</div>
-                    <input type='radio'/>
+                    <FlexStart><input type='radio' style={{height:"100%"}}  />
+                    <div >public</div>
+                    </FlexStart>
+                   <FlexStart>
+                   <input type='radio'/>
                     <div>Curated Audience</div>
+                   </FlexStart>
+                    <FlexStart>
                     <input type='radio'/>
                     <div>Community Only</div>
+                    </FlexStart>
                 </ContentContainer>
                 <div>Pick tags for our curation engine to work its magin</div>
                 <button type='button' style={{backgroundColor:"yellow",color:"purple"}}>Create Social</button>
@@ -141,11 +174,8 @@ const Content = () => {
         </ContentContainer>
         </BodyItem>
        </BodyContainer>
-
-
-
         <FlexEnd>
-        
+        adadads
         </FlexEnd>
     </Block>
   )
