@@ -7,7 +7,7 @@ import RadioItem from './RadioItem';
 
 const Block = styled.div`
     width:100%;
-    height:100%;
+    height:800px;
 `;
 const HeaderContainer = styled.div`
     width:100%;
@@ -55,7 +55,7 @@ const FlexEnd = styled.div`
     flex-direction:column;
     height:50px;
     position:relative;
-    bottom:-100px;
+    bottom:-5px;
     background-color:black;
     
 `;
@@ -66,7 +66,7 @@ const BodyItem = styled.div`
     justify-content:center;
     align-items:center;
     width:90%;
-    height:600px;
+    
 `;
 const ImgContainer = styled.div`
     display:flex;
@@ -80,6 +80,7 @@ const BodyContainer = styled.div`
     align-items:center;
     background:linear-gradient(90deg, rgba(237,216,15,1) 28%, rgba(255,134,18,1) 60%);
     width:100%;
+    height:100%;
     
 `;
 
@@ -87,15 +88,15 @@ const ContentContainer = styled.div`
     display:flex;
     flex-direction:row;
     width:100%;
-
+    
     justify-content:space-between;
 
 `;
 const ContentBlock = styled.div`
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     width:100%;
-    gap:100px;
+    gap:50px;
     justify-content:space-between;
 
 `;
@@ -124,6 +125,7 @@ const Content = () => {
     const colorChangeLeave=()=>{
             setColorButton("purple");
     }
+    const [pageChange,setPageChange]=useState(false);
     return (
         <Block >
 
@@ -133,7 +135,7 @@ const Content = () => {
                     <HeaderContainer>
                         <div>
                             <ImgContainer>
-                                <img src={logoPic} style={{ width: "100%" }} alt="picture1" />
+                                <img src={logoPic} style={{ width: "100%", height:"100%" }} alt="picture1" />
                             </ImgContainer>
                         </div>
                         <HeaderItemContainer>
@@ -161,7 +163,7 @@ const Content = () => {
 
 
                     <ContentBlock>
-                        <div style={{ width: "40%", height: "80%" }}>
+                        <div style={{ width: "50%", height: "80%" }}>
                             <div>Description</div>
                             <input type='text' placeholder='Description of your event' style={{ height: "100%", width: "100%" }} />
                         </div>
