@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderItemCreate from './HeaderItemCreate';
 import FormRender from './FormRender';
 import logoPic from '../img/header-logo.a4cff821.svg'
-import RadioItem from './radioItem';
-const Block=styled.div`
+import RadioItem from './RadioItem';
+import { hover } from '@testing-library/user-event/dist/hover';
+const Block = styled.div`
     width:100%;
     height:100%;
     
     
 
 `;
-const HeaderContainer=styled.div`
+const HeaderContainer = styled.div`
     width:100%;
     height:150px;
     display:flex;
@@ -20,14 +21,14 @@ const HeaderContainer=styled.div`
     padding-top:25px;
 
 `;
-const HeaderItemContainer=styled.div`
+const HeaderItemContainer = styled.div`
     display:flex;
     flex-direction:row;
     gap:10px;
     
 `;
 
-const BannerContainer=styled.div`
+const BannerContainer = styled.div`
     width:100%;
     height:100%;
     display:flex;
@@ -37,7 +38,7 @@ const BannerContainer=styled.div`
 
 
 `;
-const BannerItem=styled.div`
+const BannerItem = styled.div`
     width:30%;
     display:flex;
     flex-direction:column;
@@ -46,23 +47,23 @@ const BannerItem=styled.div`
 `;
 
 
-const AddPictureContainer=styled.div`
+const AddPictureContainer = styled.div`
     border:2px dashed white;
     width:60%;
     height:90%;
     border-radius:5px;
 `;
-const FlexEnd=styled.div`
+const FlexEnd = styled.div`
     display:flex;
     flex-direction:column;
-    
+    height:50px;
     position:relative;
     bottom:-100px;
     background-color:black;
     
 `;
 
-const BodyItem=styled.div`
+const BodyItem = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -70,12 +71,12 @@ const BodyItem=styled.div`
     width:90%;
     height:600px;
 `;
-const ImgContainer=styled.div`
+const ImgContainer = styled.div`
     display:flex;
     flex-direction:row;
 
 `;
-const BodyContainer=styled.div`
+const BodyContainer = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -85,15 +86,23 @@ const BodyContainer=styled.div`
     
 `;
 
-const ContentContainer=styled.div`
+const ContentContainer = styled.div`
     display:flex;
     flex-direction:row;
     width:100%;
-    
+
     justify-content:space-between;
 
 `;
-const ContentItem=styled.div`
+const ContentBlock = styled.div`
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    gap:100px;
+    justify-content:space-between;
+
+`;
+const ContentItem = styled.div`
     background-color:white;
     border-radius:10px;
     height:100%;
@@ -104,60 +113,65 @@ const ContentItem=styled.div`
     
 
 `;
-export const FlexStart=styled.div`
+export const FlexStart = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:flex-start;
     height:50%;
 `;
 const Content = () => {
-    
-   
-  return (
-    <Block >
-        
+    const [colorButton,setColorButton]=useState("purple");
+    const colorChangeEnter=(x)=>{
+            setColorButton("blue");
+    }
+    const colorChangeLeave=(x)=>{
+            setColorButton("purple");
+    }
+    return (
+        <Block >
 
-       <BodyContainer >
-       <BodyItem>
-       <HeaderContainer>
-            <div>
-                <ImgContainer>
-                <img src={logoPic} style={{width:"100%"}} alt="picture1" />
-                </ImgContainer>
-            </div>
-            <HeaderItemContainer>
-                <HeaderItemCreate title="Blog"></HeaderItemCreate>
-                <HeaderItemCreate title="Socials"></HeaderItemCreate>
-                <HeaderItemCreate title="Past Social"></HeaderItemCreate>
-                <HeaderItemCreate title="Clubs"></HeaderItemCreate>
-                <HeaderItemCreate title="Contact"></HeaderItemCreate>
-            </HeaderItemContainer>
-        </HeaderContainer>
-        <BannerContainer>
-            <BannerItem>
-            <div>
-                <h1 style={{backgroundColor:"purple"}}>Untitle</h1>
-                <h1>Event</h1>
-            </div>
-            <FormRender/>
-            </BannerItem>
 
-            <AddPictureContainer><input type='file'/></AddPictureContainer>
-            
-        </BannerContainer>
-        
-        
-        <ContentContainer>
-            <div style={{width:"40%",height:"80%"}}>
-                <div>Description</div>
-                <input type='text' placeholder='Description of your event' style={{height:"100%",width:"100%"}}/>
-            </div>
-            <ContentItem>
-                <h2 style={{backgroundColor:"yellow",color:"purple", width:"30%"}}>Settings</h2>
-                <FlexStart><input type='checkbox'/><div>I want to approve attendees</div></FlexStart>
-                
-                <ContentContainer>
-                    {/* <FlexStart><input type='radio' style={{height:"100%"}}  />
+            <BodyContainer >
+                <BodyItem>
+                    <HeaderContainer>
+                        <div>
+                            <ImgContainer>
+                                <img src={logoPic} style={{ width: "100%" }} alt="picture1" />
+                            </ImgContainer>
+                        </div>
+                        <HeaderItemContainer>
+                            <HeaderItemCreate title="Blog"></HeaderItemCreate>
+                            <HeaderItemCreate title="Socials"></HeaderItemCreate>
+                            <HeaderItemCreate title="Past Social"></HeaderItemCreate>
+                            <HeaderItemCreate title="Clubs"></HeaderItemCreate>
+                            <HeaderItemCreate title="Contact"></HeaderItemCreate>
+                        </HeaderItemContainer>
+                    </HeaderContainer>
+                    <BannerContainer>
+                        <BannerItem>
+                            <div>
+                                <h1 style={{ backgroundColor: "purple" }}>Untitle</h1>
+                                <h1>Event</h1>
+                            </div>
+                            <FormRender />
+                        </BannerItem>
+
+                        <AddPictureContainer><input type='file' /></AddPictureContainer>
+
+                    </BannerContainer>
+
+
+                    <ContentBlock>
+                        <div style={{ width: "40%", height: "80%" }}>
+                            <div>Description</div>
+                            <input type='text' placeholder='Description of your event' style={{ height: "100%", width: "100%" }} />
+                        </div>
+                        <ContentItem>
+                            <h2 style={{ backgroundColor: "yellow", color: "purple", width: "30%" }}>Settings</h2>
+                            <FlexStart><input type='checkbox' /><div>I want to approve attendees</div></FlexStart>
+
+                            <ContentContainer>
+                                {/* <FlexStart><input type='radio' style={{height:"100%"}}  />
                     <div >public</div>
                     </FlexStart>
                    <FlexStart>
@@ -168,21 +182,21 @@ const Content = () => {
                     <input type='radio'/>
                     <div>Community Only</div>
                     </FlexStart> */}
-                    <RadioItem content="Public"/>
-                    <RadioItem content="Curated Audience"/>
-                    <RadioItem content="Community Only"/>
-                </ContentContainer>
-                <div>Pick tags for our curation engine to work its magin</div>
-                <button type='button' style={{backgroundColor:"yellow",color:"purple"}}>Create Social</button>
-            </ContentItem>
-        </ContentContainer>
-        </BodyItem>
-       </BodyContainer>
-        <FlexEnd>
-        adadads
-        </FlexEnd>
-    </Block>
-  )
+                                <RadioItem content="Public" />
+                                <RadioItem content="Curated Audience" />
+                                <RadioItem content="Community Only" />
+                            </ContentContainer>
+                            <div>Pick tags for our curation engine to work its magin</div>
+                            <button style={{ backgroundColor: "yellow", color: colorButton}} onMouseEnter={colorChangeEnter} onMouseLeave={colorChangeLeave}>Create Social</button>
+                        </ContentItem>
+                    </ContentBlock>
+                </BodyItem>
+            </BodyContainer>
+            <FlexEnd>
+
+            </FlexEnd>
+        </Block>
+    )
 }
 
 export default Content
