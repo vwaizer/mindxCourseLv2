@@ -46,16 +46,16 @@ const DataRender = (props) => {
       let lengthData=data.length;
       let result=[];
       if(data.length ===0){
-        
+        result.push(<div></div>)
       }
       else{
         result=[];
-        
         for(let i=0;i<lengthData;i++){
-        let dt = new Date( (data[i].date));
-        let year = dt.getFullYear();
-        let month =  (dt.getMonth()+1);
-        let day = dt.getDate();
+        var dt = new Date( (data[i].date));
+
+      var year = dt.getFullYear();
+      var month =  (dt.getMonth() < 10 ? '0' : '') + (dt.getMonth()+1);
+      var day = (dt.getDate() < 10 ? '0' : '') + dt.getDate();
          result.push(
           <div>
             <Container >
