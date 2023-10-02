@@ -1,6 +1,6 @@
 import React from 'react';
 import {styled} from "styled-components";
-import PlaceOfButton from './PlaceOfButton';
+import AddListButton from './ButtonAddList';
 export const Flex = styled.div`
     display: flex;
     justify-content:end;
@@ -41,7 +41,7 @@ const Content = () => {
     return (
         <>
     
-            <PlaceOfButton></PlaceOfButton>
+            <AddListButton/>
         
         
         </>
