@@ -4,13 +4,10 @@ import HeaderItemCreate from './HeaderItemCreate';
 import FormRender from './FormRender';
 import logoPic from '../img/header-logo.a4cff821.svg'
 import RadioItem from './RadioItem';
-import { hover } from '@testing-library/user-event/dist/hover';
+
 const Block = styled.div`
     width:100%;
     height:100%;
-    
-    
-
 `;
 const HeaderContainer = styled.div`
     width:100%;
@@ -96,7 +93,7 @@ const ContentContainer = styled.div`
 `;
 const ContentBlock = styled.div`
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     width:100%;
     gap:100px;
     justify-content:space-between;
@@ -117,14 +114,14 @@ export const FlexStart = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:flex-start;
-    height:50%;
+    height:100%;
 `;
 const Content = () => {
     const [colorButton,setColorButton]=useState("purple");
-    const colorChangeEnter=(x)=>{
+    const colorChangeEnter=()=>{
             setColorButton("blue");
     }
-    const colorChangeLeave=(x)=>{
+    const colorChangeLeave=()=>{
             setColorButton("purple");
     }
     return (
@@ -143,7 +140,9 @@ const Content = () => {
                             <HeaderItemCreate title="Blog"></HeaderItemCreate>
                             <HeaderItemCreate title="Socials"></HeaderItemCreate>
                             <HeaderItemCreate title="Past Social"></HeaderItemCreate>
-                            <HeaderItemCreate title="Clubs"></HeaderItemCreate>
+                            <select style={{height:"30px",backgroundColor:"transparent",fontSize:"20px"}}>
+                                <option selected hidden >Club</option>
+                            </select>
                             <HeaderItemCreate title="Contact"></HeaderItemCreate>
                         </HeaderItemContainer>
                     </HeaderContainer>
@@ -182,6 +181,7 @@ const Content = () => {
                     <input type='radio'/>
                     <div>Community Only</div>
                     </FlexStart> */}
+
                                 <RadioItem content="Public" />
                                 <RadioItem content="Curated Audience" />
                                 <RadioItem content="Community Only" />
