@@ -60,6 +60,7 @@ const TableContainer=styled.div`
     border-radius:10px;
     border:2px solid black;
     background-color:white;
+    transition:all 1s linear;
 
 `;
 
@@ -191,6 +192,7 @@ const Content = () => {
             </FooterItem>
             <FooterItem>
                 <h2>Giới Thiệu</h2>
+                <hr style={{borderWidth:"1px 150px",borderColor:"purple"}}/>
                 <div>Về Chúng tôi</div>
                 <div>Dịch vụ</div>
                 <div>Tính năng</div>
@@ -198,6 +200,7 @@ const Content = () => {
             </FooterItem>
             <FooterItem>
                 <h2>Hỗ Trợ </h2>
+                <hr style={{borderWidth:"1px 150px",borderColor:"purple"}}/>
                 <div>Câu hỏi thường gặp</div>
                 <div>Chính sách bảo mật</div>
                 <div>Điều khoản sử dụng</div>
@@ -205,6 +208,7 @@ const Content = () => {
             </FooterItem>
             <FooterItem style={{width:"15%"}}>
                 <h2>Liên hệ</h2>
+                <hr style={{borderWidth:"1px 150px",borderColor:"purple"}}/>
                 <div>Địa chỉ:227 Đường Nguyễn Văn Cừ, Phường 4, Quận 5, Hồ Chí Minh</div>
                 <div>Email:admin@whitefoo.com</div>
                 <div>Phone:(+84) 1234567890</div>
