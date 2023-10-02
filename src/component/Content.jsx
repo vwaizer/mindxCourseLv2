@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import HeaderItemCreate from './HeaderItemCreate';
 import FormRender from './FormRender';
 import logoPic from '../img/header-logo.a4cff821.svg'
+import RadioItem from './radioItem';
 const Block=styled.div`
     width:100%;
     height:100%;
@@ -103,7 +104,7 @@ const ContentItem=styled.div`
     
 
 `;
-const FlexStart=styled.div`
+export const FlexStart=styled.div`
     display:flex;
     flex-direction:row;
     justify-content:flex-start;
@@ -156,7 +157,7 @@ const Content = () => {
                 <FlexStart><input type='checkbox'/><div>I want to approve attendees</div></FlexStart>
                 
                 <ContentContainer>
-                    <FlexStart><input type='radio' style={{height:"100%"}}  />
+                    {/* <FlexStart><input type='radio' style={{height:"100%"}}  />
                     <div >public</div>
                     </FlexStart>
                    <FlexStart>
@@ -166,7 +167,10 @@ const Content = () => {
                     <FlexStart>
                     <input type='radio'/>
                     <div>Community Only</div>
-                    </FlexStart>
+                    </FlexStart> */}
+                    <RadioItem content="Public"/>
+                    <RadioItem content="Curated Audience"/>
+                    <RadioItem content="Community Only"/>
                 </ContentContainer>
                 <div>Pick tags for our curation engine to work its magin</div>
                 <button type='button' style={{backgroundColor:"yellow",color:"purple"}}>Create Social</button>
