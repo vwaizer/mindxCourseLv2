@@ -54,8 +54,8 @@ const DataRender = (props) => {
         var dt = new Date( (data[i].date));
 
       var year = dt.getFullYear();
-      var month =  (dt.getMonth() < 10 ? '0' : '') + (dt.getMonth()+1);
-      var day = (dt.getDate() < 10 ? '0' : '') + dt.getDate();
+      var month =   (dt.getMonth()+1);
+      var day = dt.getDate();
          result.push(
           <div>
             <Container >
