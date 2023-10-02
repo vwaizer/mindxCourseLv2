@@ -68,11 +68,11 @@ const InputContainer=styled.div`
     gap:20px;
 `;
 
-const PlaceOfButton = (props) => {
+const PlaceOfButton = () => {
     const [filtered,setFiltered]=useState(false);
     const [filterData,setFilterData]=useState([]);
     // let dataBase=props.data;
-    const [dataBase,setDataBase]=useState(props.data);
+    const [dataBase,setDataBase]=useState([]);
     const [nameValue,setNameValue]=useState({});
     const [amountValue,setAmountValue]=useState({});
     const [dateValue,setDateValue]=useState({});

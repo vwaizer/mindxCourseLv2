@@ -46,7 +46,7 @@ export const Block=styled.div`
 
 `;
 const AddListButton = (props) => {
-    let dataBase=[];
+    
    
     
     
@@ -54,7 +54,7 @@ const AddListButton = (props) => {
         <Block>
                
               
-              <PlaceOfButton data={dataBase} />
+              <PlaceOfButton  />
                    
               
         </Block>
