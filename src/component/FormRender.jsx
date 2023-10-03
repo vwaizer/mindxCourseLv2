@@ -18,33 +18,38 @@ const InputBlock = styled.div`
         flex-direction:column;
         justify-content:space-evenly;
 `;
-const FormRender = () => {
+const FormRender = (props) => {
+    let hasProps=false;
+    if (props.data !== undefined){
+        hasProps=true;
+    }
     return (
         <InputBlock>
             <InputContainer>
                 <InputContainer>
                     <img src={calendarLogo} alt="" style={{ width: "20%", height: "40%" }} />
-                    <input type='date' placeholder='Date' style={{ width: "50%", height: "50%" }} />
+                    {hasProps? <div>{props.data.date}</div> :<input type='date' placeholder='Date' style={{ width: "50%", height: "50%" }} />}
                 </InputContainer>
+
                 <InputContainer>
                     <img src={timeLogo} alt="" style={{ width: "20%", height: "40%" }} />
-                    <input type='time' placeholder='Time' style={{ width: "50%", height: "50%" }} />
+                    { hasProps? <div>{props.data.time}</div>:<input type='time' placeholder='Time' style={{ width: "50%", height: "50%" }} />}
                 </InputContainer>
             </InputContainer>
 
             <InputContainer>
                 <img src={locationLogo} alt="" style={{ width: "20%", height: "40%" }} />
-                <input type='text' placeholder='Venue' style={{width:"100%",height:"40px"}}></input>
+                {hasProps? <div>{props.data.venue}</div> :<input type='text' placeholder='Venue' style={{width:"100%",height:"40px"}}></input>}
             </InputContainer>
             <InputContainer>
 
                 <InputContainer>
                     <img src={groupLogo} alt="" style={{ width: "20%", height: "40%" }} />
-                    <input type='text' placeholder="Max capacity" style={{width:"50%",height:"50%"}}></input>
+                    {hasProps? <div>{props.data.people}</div>:<input type='text' placeholder="Max capacity" style={{width:"50%",height:"50%"}}></input>}
                 </InputContainer>
                 <InputContainer>
                     <img src={dollarLogo} alt="" style={{ width: "20%", height: "40%" }} />
-                    <input type='text' placeholder='Cost per person' style={{width:"50%",height:"50%"}}></input>
+                    {hasProps? <div>{props.data.dollar}</div>:<input type='text' placeholder='Cost per person' style={{width:"50%",height:"50%"}}></input>}
 
                 </InputContainer>
             </InputContainer>

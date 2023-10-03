@@ -7,7 +7,8 @@ import RadioItem from './RadioItem';
 
 const Block = styled.div`
     width:100%;
-    height:800px;
+    
+    padding:0;
 `;
 const HeaderContainer = styled.div`
     width:100%;
@@ -15,7 +16,7 @@ const HeaderContainer = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:space-between;
-    padding-top:25px;
+    padding-top:0px;
 
 `;
 const HeaderItemContainer = styled.div`
@@ -55,7 +56,7 @@ const FlexEnd = styled.div`
     flex-direction:column;
     height:50px;
     position:relative;
-    bottom:-5px;
+    bottom:-10px;
     background-color:black;
     
 `;
@@ -103,7 +104,7 @@ const ContentBlock = styled.div`
 const ContentItem = styled.div`
     background-color:white;
     border-radius:10px;
-    height:100%;
+    height:150px;
     width:50%;
     display:flex;
     flex-direction: column;
@@ -118,6 +119,27 @@ export const FlexStart = styled.div`
     height:100%;
 `;
 const Content = () => {
+    const data={
+        date:"October 11, Wed",
+        time:"7 PM",
+        venue:"Chelsea Market (163 W 20nd Street). Manhattan, NYC",
+        people:"50 people",
+        dollar:"$30"
+
+    }
+    const context=`Calling all web3 founders and designers for an exciting night of exchanging ideas and making new friends! Come make friends with fellow designers and founders in web3. There will also be lots of insights to be gained through an intimate chat +Q&A with two giants in the industry:
+
+    Phil Hedayatnia, Founder & CEO of Airfoil, a growth design studio that has designed and built products in web3, the creator economy, the future of work, and much more for 80+ startups since 2018
+    
+    Jihoon Suh, Senior Product Designer at Coinbase, who was previously Senior Product Designer for Messenger for Meta.
+    
+    This will be a curated group with limited spots, so do sign up early!
+    
+    About Airfoil:
+    
+    Airfoil Studio is the design, branding, and engineering team helping web3 take flight. As one of crypto’s first large-scale design firms, our mission is to design a friendlier financial layer for the internet. We’re a team of 85+ creatives, working from Airfoil’s hubs in Toronto, Singapore, and Seoul, who’ve worked on 100+ projects since 2018, including Solana Pay, Drift Protocol, Bonfida Solana Name Service, Utopia Labs, Planetarium, Layer3.xyz, MarginFi, Hyperspace, VBA Game, and more.
+    
+    Learn more about Airfoil and our work at airfoil.studio.`;
     const [colorButton,setColorButton]=useState("purple");
     const colorChangeEnter=()=>{
             setColorButton("blue");
@@ -148,55 +170,50 @@ const Content = () => {
                             <HeaderItemCreate title="Contact"></HeaderItemCreate>
                         </HeaderItemContainer>
                     </HeaderContainer>
+
+
                     <BannerContainer>
                         <BannerItem>
-                            <div>
+                            {pageChange ? <div>
+                                <h1 style={{ backgroundColor: "purple" }}>Web3 Founders & Designers Mixer + fireside chat with Coinbase Senior Designer & Airfoil founder</h1>
+                            </div> :<div>
                                 <h1 style={{ backgroundColor: "purple" }}>Untitle</h1>
                                 <h1>Event</h1>
-                            </div>
-                            <FormRender />
+                            </div>}
+
+                            {pageChange? <FormRender data={data} />: <FormRender  />}
                         </BannerItem>
 
-                        <AddPictureContainer><input type='file' /></AddPictureContainer>
+                        <AddPictureContainer>{pageChange? <img src='https://nextjs-test-k0n24xyth-hieu2304.vercel.app/_next/image?url=https%3A%2F%2Fsupermomos-app-resources-us.s3.amazonaws.com%2FImages%2FSocialBanner%2Fbanner_1.jpg&w=750&q=75' alt='banner'/> :<input type='file'  style={{height:"300px"}}/>}</AddPictureContainer>
 
                     </BannerContainer>
 
 
                     <ContentBlock>
-                        <div style={{ width: "50%", height: "80%" }}>
+                        {pageChange ? <div style={{width:"50%"}}>{context}</div> :<><div style={{ width: "50%", height: "80%" }}>
                             <div>Description</div>
-                            <input type='text' placeholder='Description of your event' style={{ height: "100%", width: "100%" }} />
+                            <input type='text' placeholder='Description of your event' style={{ height: "150px", width: "100%" }} />
                         </div>
                         <ContentItem>
                             <h2 style={{ backgroundColor: "yellow", color: "purple", width: "30%" }}>Settings</h2>
                             <FlexStart><input type='checkbox' /><div>I want to approve attendees</div></FlexStart>
 
                             <ContentContainer>
-                                {/* <FlexStart><input type='radio' style={{height:"100%"}}  />
-                    <div >public</div>
-                    </FlexStart>
-                   <FlexStart>
-                   <input type='radio'/>
-                    <div>Curated Audience</div>
-                   </FlexStart>
-                    <FlexStart>
-                    <input type='radio'/>
-                    <div>Community Only</div>
-                    </FlexStart> */}
+                              
 
                                 <RadioItem content="Public" />
                                 <RadioItem content="Curated Audience" />
                                 <RadioItem content="Community Only" />
                             </ContentContainer>
                             <div>Pick tags for our curation engine to work its magin</div>
-                            <button style={{ backgroundColor: "yellow", color: colorButton}} onMouseEnter={colorChangeEnter} onMouseLeave={colorChangeLeave}>Create Social</button>
-                        </ContentItem>
+                            <button style={{ backgroundColor: "yellow", color: colorButton}} onMouseEnter={colorChangeEnter} onMouseLeave={colorChangeLeave} onClick={()=>setPageChange(true)}>Create Social</button>
+                        </ContentItem></>}
                     </ContentBlock>
                 </BodyItem>
             </BodyContainer>
-            <FlexEnd>
+            {pageChange? <></>:<FlexEnd>
 
-            </FlexEnd>
+            </FlexEnd>}
         </Block>
     )
 }
