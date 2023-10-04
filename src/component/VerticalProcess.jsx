@@ -16,18 +16,18 @@ const VerticalProcess = (props) => {
   let percentage = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   if (dataBase.length !== 0) {
     for (let k = 0; k < dataBase.length; k++) {
-      sum += dataBase[k].amount;
+      sum += parseInt(dataBase[k].amount);
     }
-
+    console.log(sum);
     for (let i = 0; i < dataBase.length; i++) {
 
       let dt = new Date((dataBase[i].date));
       let month = (dt.getMonth() + 1);
-      percentage[month - 1] += dataBase[i].amount;  
+      percentage[month - 1] += parseInt(dataBase[i].amount);  
     }
-
+    console.log(percentage);
     for (let j = 0; j < 12; j++) {
-      if (percentage[j] !== 0) { percentage[j] = Math.floor( (percentage[j] / sum) * 100); }
+      if (percentage[j] !== 0) { percentage[j] =  Math.floor( percentage[j] / sum * 100); }
 
     }
   }
