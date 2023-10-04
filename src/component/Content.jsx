@@ -4,6 +4,7 @@ import HeaderItemCreate from './HeaderItemCreate';
 import FormRender from './FormRender';
 import logoPic from '../img/header-logo.a4cff821.svg'
 import RadioItem from './RadioItem';
+import ButtonRender from './ButtonRender';
 
 const Block = styled.div`
     width:100%;
@@ -56,7 +57,7 @@ const FlexEnd = styled.div`
     flex-direction:column;
     height:50px;
     position:relative;
-    bottom:-10px;
+    bottom:-50px;
     background-color:black;
     
 `;
@@ -206,6 +207,7 @@ const Content = () => {
                                 <RadioItem content="Community Only" />
                             </ContentContainer>
                             <div>Pick tags for our curation engine to work its magin</div>
+                            <ButtonRender/>
                             <button style={{ backgroundColor: "yellow", color: colorButton}} onMouseEnter={colorChangeEnter} onMouseLeave={colorChangeLeave} onClick={()=>setPageChange(true)}>Create Social</button>
                         </ContentItem></>}
                     </ContentBlock>
