@@ -192,7 +192,7 @@ const Content = () => {
 
                     <ContentBlock>
                         {pageChange ? <div style={{width:"50%"}}>{context}</div> :<><div style={{ width: "50%", height: "80%" }}>
-                            <div>Descript</div>
+                            <div>Description</div>
                             <input type='text' placeholder='Description of your event' style={{ height: "150px", width: "100%" }} />
                         </div>
                         <ContentItem>
