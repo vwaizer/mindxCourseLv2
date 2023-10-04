@@ -57,7 +57,7 @@ const DisplayButton = (props) => {
             
             </>)
         :<></>
-        
+    
     };
   return (
     <DisplayArea>
