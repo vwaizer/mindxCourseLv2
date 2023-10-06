@@ -1,22 +1,21 @@
 import React from 'react'
 import styled from 'styled-components';
-const HeaderItem=styled.div`
-    color:white;
+const HeaderItem=styled.button`
+    
     background-color:transparent;
     border:0px;
-    
+    font-size:20px;
+    height:30px;
+    color:black;
+    cursor:pointer;
+    padding:0;
 `;
 
 const HeaderItemCreate = (props) => {
-    const enterChangeColor=(e)=>{
-        e.target.style.color="blue";
-    }
-    const leaveChangeColor=(e)=>{
-        e.target.style.color="black";
-    }
+ 
   return (
     <>
-    <HeaderItem> <button style={{backgroundColor:"transparent",border:0,fontSize:"20px",color:"black",cursor:"pointer"}} onMouseEnter={enterChangeColor} onMouseLeave={leaveChangeColor}>{props.title} </button></HeaderItem>
+    <HeaderItem className='headerItem'> {props.title}</HeaderItem>
     
     </>
   )

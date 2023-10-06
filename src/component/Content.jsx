@@ -22,7 +22,7 @@ const HeaderContainer = styled.div`
 const HeaderItemContainer = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 20px;
 `;
 
 const BannerContainer = styled.div`
@@ -43,7 +43,8 @@ const AddPictureContainer = styled.div`
   border: 2px dashed white;
 
   height: 90%;
-  border-radius: 10px;
+  border-top-right-radius:  20px;
+  border-bottom-left-radius:  20px;
 `;
 const FlexEnd = styled.div`
   display: flex;
@@ -141,9 +142,10 @@ const Content = () => {
               <HeaderItemCreate title="Blog" />
               <HeaderItemCreate title="Socials" />
               <HeaderItemCreate title="Past Social" />
-              <select style={{ height: '30px', backgroundColor: 'transparent', fontSize: '20px' }}>
+             
+              <select  className='selectItem'>
                 <option selected hidden>
-                  Club
+                <HeaderItemCreate title="Club"/>
                 </option>
               </select>
               <HeaderItemCreate title="Contact"></HeaderItemCreate>
@@ -160,20 +162,20 @@ const Content = () => {
                   </h1>
                 </div>
               ) : (
-                <div>
+                <div >
                   <h1 style={{ backgroundColor: 'purple' }}>Untitle</h1>
-                  <h1>Event</h1>
+                  <h1 style={{marginBottom:"-40px"}}>Event</h1>
                 </div>
               )}
 
-              {pageChange ? <FormRender data={data} /> : <FormRender />}
+              {pageChange ? <FormRender data={data}/> : <FormRender />}
             </BannerItem>
 
             <AddPictureContainer>
               {pageChange ? (
                 <img
                   src="https://nextjs-test-k0n24xyth-hieu2304.vercel.app/_next/image?url=https%3A%2F%2Fsupermomos-app-resources-us.s3.amazonaws.com%2FImages%2FSocialBanner%2Fbanner_1.jpg&w=750&q=75"
-                  alt="banner"
+                  alt="banner" className='pictureCss'
                 />
               ) : (
                 <input type="file" style={{ height: '300px', width: '800px' }} />

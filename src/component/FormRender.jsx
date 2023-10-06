@@ -17,6 +17,9 @@ const InputBlock = styled.div`
         display:flex;
         flex-direction:column;
         justify-content:space-evenly;
+        
+       
+   
 `;
 const FormRender = (props) => {
     let hasProps=false;
@@ -27,7 +30,7 @@ const FormRender = (props) => {
         <InputBlock>
             <InputContainer>
                 <InputContainer>
-                    <img src={calendarLogo} alt="" style={{ width: "20%", height: "40%" }} />
+                    <img src={calendarLogo} alt="" style={{ width: "30%", height: "50%" }} />
                     {hasProps? <div>{props.data.date}</div> :<input type='date' placeholder='Date' style={{ width: "50%", height: "50%" }} />}
                 </InputContainer>
 
@@ -44,7 +47,7 @@ const FormRender = (props) => {
             <InputContainer>
 
                 <InputContainer>
-                    <img src={groupLogo} alt="" style={{ width: "20%", height: "40%" }} />
+                    <img src={groupLogo} alt="" style={{ width: "25%", height: "50%" }} />
                     {hasProps? <div>{props.data.people}</div>:<input type='text' placeholder="Max capacity" style={{width:"50%",height:"50%"}}></input>}
                 </InputContainer>
                 <InputContainer>
