@@ -1,11 +1,12 @@
 
 import './App.css';
 
-import Content from './Component/Content';
 
+import Content from './Component/Content';
+import './Content.css'
 function App() {
   return (
-    <Content></Content>
+    <Content/>
   );
 }
 

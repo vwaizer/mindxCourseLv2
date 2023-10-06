@@ -1,68 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-
+import DisplayItem from './DisplayItem';
 const DisplayArea=styled.div`
     display:flex;
     flex-direction:row;
 `;
-const DisplayItem=styled.div`
-    background-color:gray;
-    border-radius:5px;
-    color:black;
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-`;
+
 const DisplayButton = (props) => {
-    let data=props.dataBase;
-    const deleteItem=(index)=>{
-        console.log("da bam");
-    }
-    console.log(data);  
-    let arrList=[];  
-    for(let index=0;index<data.length;index++){
-        (data[index]===1)?
-           arrList.push( <>
-            <DisplayItem>
-                <div>Product</div>
-                <button onClick={(index)=>deleteItem(index)} style={{backgroundColor:"transparent",border:"0"}}>x</button>
-            </DisplayItem>
+    const dataSet=["Product","Marketing","Engineering","Design"]
+    // const [data,setData]=useState(props.dataBase);
+    const data=props.dataBase;
+    console.log(data);   
+    const renderData= data.map((item,index)=>{
+          return  ( <>
+                <DisplayItem title={dataSet[item-1]} />
             
             </>)
-        :
-         (data[index] ===2)?
-           arrList.push(<>
-            <DisplayItem>
-                <div>Marketing</div>
-                <button onClick={(index)=>deleteItem(index)} style={{backgroundColor:"transparent",border:"0"}}>x</button>
-            </DisplayItem>
-            
-            </>)
-        :
-        (data[index] === 3)?
-            arrList.push(<>
-            <DisplayItem>
-                <div>Engineering</div>
-                <button onClick={(index)=>deleteItem(index)} style={{backgroundColor:"transparent",border:"0"}}>x</button>
-            </DisplayItem>
-            
-            </>)
-        :
-        (data[index] === 4)?
-           arrList.push( <>
-            <DisplayItem>
-                <div>Design</div>
-                <button onClick={(index)=>deleteItem(index)} style={{backgroundColor:"transparent",border:"0"}}>x</button>
-            </DisplayItem>
-            
-            </>)
-        :<></>
     
-    };
+    });
   return (
     <DisplayArea>
-        {arrList}
-        
+        {renderData}
       
     </DisplayArea>
   )

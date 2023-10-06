@@ -20,7 +20,7 @@ const InputBlock = styled.div`
 `;
 const FormRender = (props) => {
     let hasProps=false;
-    if (props.data !== undefined){
+    if (props.data){
         hasProps=true;
     }
     return (
