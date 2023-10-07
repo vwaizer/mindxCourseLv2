@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 const Display=styled.div`
-    background-color:gray;
+    border:2px solid gray;
     border-radius:5px;
     color:black;
     display:flex;

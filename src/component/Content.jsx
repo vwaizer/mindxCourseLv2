@@ -5,6 +5,7 @@ import FormRender from './FormRender';
 import logoPic from '../img/header-logo.a4cff821.svg';
 import RadioItem from './RadioItem';
 import ButtonRender from './ButtonRender';
+import ImgRender from './ImgRender';
 
 const Block = styled.div`
   width: 1500px;
@@ -51,7 +52,7 @@ const FlexEnd = styled.div`
   flex-direction: column;
   height: 50px;
   position: relative;
-  bottom: -50px;
+  bottom: -10px;
   background-color: black;
 `;
 
@@ -71,7 +72,7 @@ const BodyContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(90deg, rgba(237, 216, 15, 1) 28%, rgba(255, 134, 18, 1) 60%);
+  background: linear-gradient(138.11deg,#fef452,#942f70 121.92%);
   width: 100%;
   height: 100%;
   margin-bottom: 10px;
@@ -156,15 +157,15 @@ const Content = () => {
             <BannerItem>
               {pageChange ? (
                 <div>
-                  <h1 style={{ backgroundColor: 'purple' }}>
+                  <h1 style={{ backgroundColor: 'purple' ,fontSize:"50px"}}>
                     Web3 Founders & Designers Mixer + fireside chat with Coinbase Senior Designer &
                     Airfoil founder
                   </h1>
                 </div>
               ) : (
-                <div >
-                  <h1 style={{ backgroundColor: 'purple' }}>Untitle</h1>
-                  <h1 style={{marginBottom:"-40px"}}>Event</h1>
+                <div  >
+                  <h1 style={{ backgroundColor: 'purple',fontSize:"50px" }}>Untitle</h1>
+                  <h1 style={{marginBottom:"-40px",fontSize:"30px"}}>Event</h1>
                 </div>
               )}
 
@@ -178,7 +179,7 @@ const Content = () => {
                   alt="banner" className='pictureCss'
                 />
               ) : (
-                <input type="file" style={{ height: '300px', width: '800px' }} />
+                <ImgRender/>
               )}
             </AddPictureContainer>
           </BannerContainer>
@@ -190,11 +191,11 @@ const Content = () => {
               <>
                 <div style={{ width: '52%', height: '80%' }}>
                   <div>Description</div>
-                  <input
-                    type="text"
+                  <textarea
+                    
                     placeholder="Description of your event"
                     style={{ height: '150px', width: '100%' }}
-                  />
+                  ></textarea>
                 </div>
                 <ContentItem>
                   <h2 style={{ backgroundColor: 'yellow', color: 'purple', width: '30%' }}>
@@ -206,9 +207,8 @@ const Content = () => {
                   </FlexStart>
                   <div>Privacy</div>
                   <ContentContainer>
-                    <RadioItem content="Public" />
-                    <RadioItem content="Curated Audience" />
-                    <RadioItem content="Community Only" />
+                    <RadioItem />
+                   
                   </ContentContainer>
                   <div>Pick tags for our curation engine to work its magin</div>
                   <div>Tag your social</div>

@@ -4,9 +4,11 @@ import DisplayButton from './DisplayButton';
 
 const ButtonItem = styled.div`
   border-radius: 10px;
-  background-color: gray;
+  background-color: #00000005;
   color: black;
   padding: 2px;
+  border:2px solid gray;
+  
 `;
 const DisplayContainer = styled.div`
   display: flex;
