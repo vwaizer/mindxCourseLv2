@@ -165,7 +165,7 @@ const Content = () => {
               ) : (
                 <div  >
                   <h1 style={{ backgroundColor: 'purple',fontSize:"50px" }}>Untitle</h1>
-                  <h1 style={{marginBottom:"-40px",fontSize:"30px"}}>Event</h1>
+                  <h1 style={{fontSize:"30px"}}>Event</h1>
                 </div>
               )}
 
